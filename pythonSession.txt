@@ -1,0 +1,297 @@
+1:Installing Python:(adding python in system path)
+Running code from command prompt.
+Code:
+	print("Hello World")  #first line
+	 
+	the_world_is_flat = True
+	 if the_world_is_flat:        #concept will be discussed later
+ 		print("Be careful not to fall off!")
+#More Concepts :
+	Source Code Encoding:
+		Python source code are treated as UTF-8 encoded by default. 
+		Standard library only uses ASCII identifier.
+		User defined  encoding.
+		# -*- coding: encoding -*-
+		# -*- coding: cp-1252 -* # windows 1252 encoding
+-
+2:I/O
+  2.2: From files
+  2.1:
+ Code:
+	person = input('Enter your name: ')
+	print('Hello', person)
+  2.2: Typecasting
+       2.2.1:Code:
+	xString = input("Enter a number: ")
+	x = int(xString)
+	yString = input("Enter a second number: ")
+	y = int(yString)
+       2.2.2: Direct Conversion
+	Code:
+	        '''Two numeric inputs, with immediate conversion'''
+
+	x = int(input("Enter a number: "))
+	y = int(input("Enter a second number: "))
+	print('The sum of ', x, ' and ', y, ' is ', x+y, '.', sep='')
+3: Data Types:
+	int ,string,
+	(complex datastructures)-list ,dictionary,tuples
+4.Integer formatting:
+4.1 round	
+print "round(80.23456, 2) : ", round(80.23456, 2)
+4.2 floor
+4.3 ceil
+4.4 .format()
+	'{:d}'.format(42)
+		42
+	
+   	'{:f}'.format(3.141592653589793)
+		3.141593
+
+	Padding numbers
+
+	Old
+
+		'%4d' % (42,)
+
+
+
+	New
+
+		'{:4d}'.format(42)
+
+			Output
+  				42
+
+Again similar to truncating strings the precision for floating point numbers limits the number of positions after the decimal point.
+
+For floating points the padding value represents the length of the complete output. In the example below we want our output to have at least 6 characters with 2 after the decimal point.
+	Old
+
+		'%06.2f' % (3.141592653589793,)
+
+
+
+	New
+
+		'{:06.2f}'.format(3.141592653589793)
+
+		Output
+			003.14
+
+
+
+For integer values providing a precision doesn't make much sense and is actually forbidden in the new style (it will result in a ValueError).
+
+	Old
+
+		'%04d' % (42,)
+
+
+
+	New
+
+		'{:04d}'.format(42)
+		Output
+			0042
+
+
+Signed numbers
+By default only negative numbers are prefixed with a sign. This can be changed of course.
+	Old
+		'%+d' % (42,)
+
+	New
+
+		'{:+d}'.format(42)
+		Output
+			+42
+
+Use a space character to indicate that negative numbers should be prefixed with a minus symbol and a leading space should be used for positive ones.
+	Old
+
+		'% d' % ((- 23),)
+
+	New
+
+		'{: d}'.format((- 23))
+
+		Output
+			-23
+
+Python as Calculator:
+>>> 2 + 2
+4
+>>> 50 - 5
+*
+6
+20
+>>> (50 - 5
+*
+6) / 4
+5.0
+>>> 8 / 5 # division always returns a floating point number
+1.6
+>>>
+>>> 17 // 3 # floor division discards the fractional part
+5
+>>> 17 % 3 # the % operator returns the remainder of the division
+2
+>>> 5
+*
+3 + 2 # result
+*
+divisor + remainder
+17
+>>>
+>>> 17 // 3 # floor division discards the fractional part
+5
+>>> 17 % 3 # the % operator returns the remainder of the division
+2
+>>> 5
+*
+3 + 2 # result
+*
+divisor + remainder
+17
+>>> 3
+*
+3.75 / 1.5
+7.5
+>>> 7.0 / 2
+3.5
+
+#Last answer is stored in _
+>>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price
+*
+tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_, 2)
+113.06
+
+In addition to int and float , Python supports other types of numbers, such as Decimal and Fraction .
+Python also has built-in support for complex numbers, and uses the j or J suffix to indicate the imaginary part
+(e.g. 3+5j ).
+
+Introduction to Looping
+>>> # Fibonacci series:
+... # the sum of two elements defines the next
+... a, b = 0, 1 #The first line contains a multiple assignment: the variables a and b simultaneously get the new values 0and 1. 
+>>> while b < 10:
+... print(b)
+... a, b = b, a+b    # multiple assignments
+...
+1
+1
+2
+3
+5
+8
+
+The keyword argument end can be used to avoid the newline after the output, or end the output with a
+different string:
+>>> a, b = 0, 1
+>>> while b < 1000:
+... print(b, end=',')
+... a, b = b, a+b
+...
+1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+
+If Else
+if Statements
+Perhaps the most well-known statement type is the if statement. For example:
+>>> x = int(input("Please enter an integer: "))
+Please enter an integer: 42
+>>> if x < 0:
+... x = 0
+... print('Negative changed to zero')
+... elif x == 0:
+... print('Zero')
+... elif x == 1:
+... print('Single')
+... else:
+... print('More')
+
+
+for Statements
+The for statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always
+iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both
+the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a
+list or a string), in the order that they appear in the sequence. For example (no pun intended):
+>>> # Measure some strings:
+... words = ['cat', 'window', 'defenestrate']
+>>> for w in words:
+... print(w, len(w))
+...
+cat 3
+window 6
+defenestrate 12
+
+The range() Function
+If you do need to iterate over a sequence of numbers, the built-in function range() comes in handy. It generates
+arithmetic progressions:
+>>> for i in range(5):
+... print(i)
+...
+0
+1
+2
+3
+4
+The given end point is never part of the generated sequence; range(10) generates 10 values, the legal indices
+for items of a sequence of length 10. It is possible to let the range start at another number, or to specify a different
+increment (even negative; sometimes this is called the ‘step’):
+range(5, 10)
+5 through 9
+range(0, 10, 3)
+0, 3, 6, 9
+range(-10, -100, -30)
+-10, -40, -70
+To iterate over the indices of a sequence, you can combine range() and len() as follows:
+>>> a = ['Mary', 'had', 'a', 'little', 'lamb']
+>>> for i in range(len(a)):
+... print(i, a[i])
+...
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+In most such cases, however, it is convenient to use the enumerate() function, see Looping Techniques.
+A strange thing happens if you just print a range:
+>>> print(range(10))
+range(0, 10)
+
+for else
+for n in range(2, 10):
+... for x in range(2, n):
+... if n % x == 0:
+... print(n, 'equals', x, '
+*
+', n//x)
+... break
+... else:
+... # loop fell through without finding a factor
+... print(n, 'is a prime number')
+
+Conceptual:
+Intermezzo: Coding Style
+PEP 8 is style guide;
+1- Use 4-space indentation, and no tabs.
+2-Wrap lines so that they don’t exceed 79 characters.
+This helps users with small displays and makes it possible to have several code files side-by-side on larger
+displays.
+3Use blank lines to separate functions and classes, and larger blocks of code inside functions.
+4.Use spaces around operators and after commas, but not directly inside bracketing constructs: a = f(1,2)
++ g(3,4) 
+5.Name your classes and functions consistently; the convention is to use CamelCase for classes and
+lower_case_with_underscores for functions and methods. Always use self as the name for
+the first method argument (see A First Look at Classes for more on classes and methods).	
+
+
+
+
