@@ -8,7 +8,7 @@ Notebooks (completed) -
 Notebooks(to be made) -
 
 - Installing and Intro (+IO)
-- Data Types (+String handling)
+- Data Types (+String handling) - Immutability
 - File Handling (+Context Managers)
 - Functions (+yield,recursion)
 - Classes and Objects (+Inheritance)

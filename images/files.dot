@@ -1,0 +1,8 @@
+digraph G {
+ program -> interpreter [ label="open(file)" ];
+ interpreter -> "operating\ system" [ label="system call"];
+ "operating\ system" -> "file\ table" [ label="get\ location"];
+ "operating\ system" -> "hard\ disk\ r/\w\ head";
+ "operating\ system" -> "process\ table" [ label="update"];
+ 
+}
